@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import styled from "styled-components";
 
 const Header = () => {
   const [date, setDate] = useState(new Date());
@@ -14,12 +15,36 @@ const Header = () => {
   },[])
 
     return (
-      <div className='gap-3 flex flex-row justify-around'>
-        <h2>Alexandr Melnikov</h2>
-        <div>{date.toLocaleDateString()}</div>
-        <div>{date.toLocaleTimeString()}</div>
+      <div className='gap-3 flex flex-row justify-between md:px-2 bg-gradient-to-tr from-sky-500 to-indigo-500 align-middle font-semibold'>
+
+        <h2 className='ml-6'>Alexandr <br/> Melnikov</h2>
+
+        <Menu className='flex flex-col sm:flex-row'>
+          <a>Главная</a>
+          <a>Проекты</a>
+          <a>Информация</a>
+        </Menu>
+
+        <DateTime>
+          <div>{date.toLocaleDateString()}</div>
+          <div>{date.toLocaleTimeString()}</div>
+        </DateTime>
       </div>
     );
 };
+
+const DateTime = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+`
+
+const Menu = styled.div`
+  gap: 30px;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+`
 
 export default Header;

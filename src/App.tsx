@@ -1,17 +1,16 @@
-import { useState } from 'react'
 import Header from "./components/ui/header/header.tsx";
+import RunningSinusoidAnimation from "./components/ui/signalsAnimations/sinus.tsx";
+import SawtoothWaveAnimation from "./components/ui/signalsAnimations/saw.tsx";
 
 function App() {
 
-    const [state, setState] = useState(0)
-
   return (
-    <>
+    <body className='bg-gradient-to-br from-sky-500 to-indigo-500 text-white min-h-screen max-h-full w-screen'>
         <Header />
-        <div className='border bg-amber-400'>{state}</div>
-        <button className='border border-red-700 rounded-2xl' onClick={() => {setState(state + 1)}}>CLICK+</button>
-        <button className='border border-blue-600 rounded-2xl' onClick={() => {setState(state - 1)}}>CLICK-</button>
-    </>
+        <hr/>
+    <RunningSinusoidAnimation/>
+    <SawtoothWaveAnimation />
+    </body>
   )
 }
 
