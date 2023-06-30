@@ -1,16 +1,16 @@
-import Header from "./components/ui/header/header.tsx";
-import RunningSinusoidAnimation from "./components/ui/signalsAnimations/sinus.tsx";
-import SawtoothWaveAnimation from "./components/ui/signalsAnimations/saw.tsx";
+import {useRef} from "react";
+import Main from "./pages/main/main.tsx";
+import Info from "./pages/main/info.tsx";
 
 function App() {
 
+  const targRef = useRef();
+
   return (
-    <body className='bg-gradient-to-br from-sky-500 to-indigo-500 text-white min-h-screen max-h-full w-screen'>
-        <Header />
-        <hr/>
-    <RunningSinusoidAnimation/>
-    <SawtoothWaveAnimation />
-    </body>
+    <div>
+      <Main targRef={targRef}/>
+      <Info ref={targRef} />
+    </div>
   )
 }
 

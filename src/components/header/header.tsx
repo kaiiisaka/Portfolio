@@ -15,11 +15,11 @@ const Header = () => {
   },[])
 
     return (
-      <div className='gap-3 flex flex-row justify-between md:px-2 bg-gradient-to-tr from-sky-500 to-indigo-500 align-middle font-semibold'>
+      <div className='gap-3 flex flex-row justify-between md:px-2 align-middle pt-2 font-semibold'>
 
         <h2 className='ml-6'>Alexandr <br/> Melnikov</h2>
 
-        <Menu className='flex flex-col sm:flex-row'>
+        <Menu className='invisible sm:visible flex-col sm:flex-row'>
           <a>Главная</a>
           <a>Проекты</a>
           <a>Информация</a>

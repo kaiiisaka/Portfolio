@@ -5,40 +5,40 @@ const RunningSinusoidAnimation = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const ctx = canvas.getContext('2d');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
 
-    const amplitude = canvas.height / 5;
-    const frequency = 0.02;
-    const speed = 1.5;
-    const y = canvas.height / 2;
-    let offsetX = 0;
+      const amplitude = canvas.height / 5;
+      const frequency = 0.02;
+      const speed = 1;
+      const y = canvas.height / 2;
+      let offsetX = 0;
 
-    const drawFrame = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const drawFrame = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.beginPath();
+        ctx.beginPath();
 
-      for (let x = 0; x < canvas.width; x += 5) {
-        const offsetY = Math.sin((x + offsetX) * frequency) * amplitude;
-        ctx.lineTo(x, y + offsetY);
-      }
+        for (let x = 0; x < canvas.width; x += 5) {
+          const offsetY = Math.sin((x + offsetX) * frequency) * amplitude;
+          ctx.lineTo(x, y + offsetY);
+        }
 
-      ctx.strokeStyle = '#000';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.closePath();
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.closePath();
 
-      offsetX += speed;
+        offsetX += speed;
 
-      requestAnimationFrame(drawFrame);
-    };
+        requestAnimationFrame(drawFrame);
+      };
 
-    drawFrame();
+      drawFrame();
+    }
   }, []);
 
-  return <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight/3} />;
+  return <canvas ref={canvasRef} width={window.innerWidth} height={window.innerWidth <= 425 ? window.innerHeight/5 : window.innerHeight/3} className='h-1/4'/>;
 };
 
 export default RunningSinusoidAnimation;
