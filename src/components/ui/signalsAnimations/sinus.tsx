@@ -24,7 +24,7 @@ const RunningSinusoidAnimation = () => {
           ctx.lineTo(x, y + offsetY);
         }
 
-        ctx.strokeStyle = '#000';
+        ctx.strokeStyle = 'lime';
         ctx.lineWidth = 2;
         ctx.stroke();
         ctx.closePath();

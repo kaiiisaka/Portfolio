@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
+import {UiButton} from "../ui/ui-button/ui-button.tsx";
+
 
 const Header = () => {
   const [date, setDate] = useState(new Date());
@@ -15,21 +18,29 @@ const Header = () => {
   },[])
 
     return (
-      <div className='gap-3 flex flex-row justify-between md:px-2 align-middle pt-2 font-semibold'>
+      <header className='flex flex-row justify-between md:px-2 align-middle pt-2 font-semibold absolute w-screen'>
 
-        <h2 className='ml-6'>Alexandr <br/> Melnikov</h2>
+        <h2 className='w-2/3 sm:w-2/12 justify-center items-center'>
+          <Link to='/'>{'< Александр Мельников />'}</Link>
+        </h2>
 
-        <Menu className='invisible sm:visible flex-col sm:flex-row'>
-          <a>Главная</a>
-          <a>Проекты</a>
-          <a>Информация</a>
+        <Menu className='hidden sm:flex sm:flex-row w-4/12 justify-center items-center'>
+          <Link to='/'>
+            <UiButton>Главная</UiButton>
+          </Link>
+          <Link to='/projects'>
+            <UiButton>Проекты</UiButton>
+          </Link>
+          <Link to='/about'>
+            <UiButton>Информация</UiButton>
+          </Link>
         </Menu>
 
-        <DateTime>
+        <DateTime className='w-1/3 sm:w-2/12'>
           <div>{date.toLocaleDateString()}</div>
           <div>{date.toLocaleTimeString()}</div>
         </DateTime>
-      </div>
+      </header>
     );
 };
 
@@ -38,11 +49,11 @@ const DateTime = styled.div`
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  cursor: default;
 `
 
 const Menu = styled.div`
   gap: 30px;
-  display: inline-flex;
   justify-items: center;
   align-items: center;
 `
